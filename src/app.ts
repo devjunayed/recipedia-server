@@ -1,10 +1,10 @@
-import express from 'express';
+import express from 'express'
 
 // creating app
-const app = express();
+const app = express()
 
-app.get("/", (req, res)=> {
-    res.send({message: "kuddus"})
+app.get('/', (req, res) => {
+  res.send({ message: 'testing' })
 })
 
-export default app;
+export default app
