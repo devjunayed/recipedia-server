@@ -38,6 +38,10 @@ const userSchema = new Schema<TUser, UserModel>(
       type: Boolean,
       default: false,
     },
+    status: {
+      type: String,
+      default: 'active'
+    }
   },
   {
     timestamps: true,

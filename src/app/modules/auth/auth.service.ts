@@ -4,13 +4,17 @@ import { User } from "../user/user.model";
 import { TLoginUser } from "./auth.interface"
 
 const logInUserFromDB = async(payload: TLoginUser) => {
-    const isUserExist = await User.isUserExistsByEmail(payload.email);
+    const user = await User.isUserExistsByEmail(payload.email);
 
-    if(!isUserExist){
+    if(!user){
         throw new AppError(httpStatus.NOT_FOUND, "User not Found!");
     }
 
+    const isDeleted = user?.isDeleted;
     
+    if(isDeleted){
+        throw new AppError(httpStatus.FORBIDDEN, 'This is user is deleted');
+    }
 
 }
 

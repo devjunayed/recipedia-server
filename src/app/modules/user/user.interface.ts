@@ -2,6 +2,7 @@
 import { Model } from "mongoose";
 
 export type TRole = 'admin' | 'user' | 'premiumUser';
+export type TStatus = 'active' | 'blocked'
 
 export interface TUser{
     username: string;
@@ -10,7 +11,8 @@ export interface TUser{
     password: string;
     address: string;
     role: TRole;
-    isDeleted: boolean
+    isDeleted: boolean,
+    status: TStatus
 }
 
 export interface UserModel extends Model<TUser>{

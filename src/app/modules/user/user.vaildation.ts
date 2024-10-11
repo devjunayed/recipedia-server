@@ -31,6 +31,10 @@ export const createUserValidation = z.object({
       required_error: 'Role is required',
       invalid_type_error: 'Role must be one of the specified values',
     }).optional(), 
+    status: z.enum(['active', 'blocked'], {
+      required_error: 'Status is required',
+      invalid_type_error: 'Status must be one of the specified values',
+    }).optional(), 
   
     isDeleted: z.boolean({
       invalid_type_error: 'isDeleted must be a boolean',
