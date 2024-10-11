@@ -1,10 +1,15 @@
 import express from 'express'
+import { AllRoutes } from './app/routes'
+import cors from 'cors'
 
 // creating app
 const app = express()
 
-app.get('/', (req, res) => {
-  res.send({ message: 'testing' })
-})
+// using cors
+app.use(cors())
+app.use(express.json())
+
+// Useing all routes
+app.use("/api/v1", AllRoutes)
 
 export default app
