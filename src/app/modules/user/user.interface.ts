@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+import { Model } from "mongoose";
 
 export type TRole = 'admin' | 'user' | 'premiumUser';
 
@@ -11,6 +13,6 @@ export interface TUser{
     isDeleted: boolean
 }
 
-// export interface UserModel extends Model<TUser>{
-//     // isUserExistsByEmail(email: string): Promise<TUser>
-// }
+export interface UserModel extends Model<TUser>{
+    isUserExistsByEmail(email: string): Promise<TUser>
+}
