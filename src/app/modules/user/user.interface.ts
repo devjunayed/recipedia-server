@@ -8,4 +8,9 @@ export interface TUser{
     password: string;
     address: string;
     role: TRole;
+    isDeleted: boolean
 }
+
+// export interface UserModel extends Model<TUser>{
+//     // isUserExistsByEmail(email: string): Promise<TUser>
+// }

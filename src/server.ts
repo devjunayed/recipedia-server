@@ -15,17 +15,17 @@ async function main() {
   }
 }
 
-process.on('unhandledRejection', () => {
-  console.log('unhandled rejection is detected, shutting down')
-  if (server) {
-    server.close(() => {
-      process.exit(1)
-    })
-  }
-})
+// process.on('unhandledRejection', () => {
+//   console.log('unhandled rejection is detected, shutting down')
+//   if (server) {
+//     server.close(() => {
+//       process.exit(1)
+//     })
+//   }
+// })
 
-process.on('uncaughtException', () => {
-  console.log('uncaughtExcepton is detected, shutting down')
-  process.exit(1)
-})
+// process.on('uncaughtException', () => {
+//   console.log('uncaughtExcepton is detected, shutting down')
+//   process.exit(1)
+// })
 main()
