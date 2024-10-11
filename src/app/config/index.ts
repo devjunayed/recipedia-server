@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import dotenv from 'dotenv'
 import path from 'path'
 
@@ -7,5 +8,6 @@ export default {
   port: process.env.PORT,
   database_url: process.env.DATABASE_URL,
   api_url: process.env.API_URL,
-  node_env: process.env.NODE_ENV
+  node_env: process.env.NODE_ENV,
+  salt_rounds: process.env.SALT_ROUNDS
 }

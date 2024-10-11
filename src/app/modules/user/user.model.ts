@@ -1,5 +1,9 @@
+/* eslint-disable @typescript-eslint/no-this-alias */
 import { model, Schema } from 'mongoose'
 import { TUser } from './user.interface'
+import bcrypt from 'bcrypt'
+import config from '../../config'
+
 
 
 const userSchema = new Schema<TUser>({
@@ -29,6 +33,7 @@ const userSchema = new Schema<TUser>({
     type: String,
     required: true,
     enum: ['admin', 'user', 'premiumUser'],
+    default: 'user'
   },
   isDeleted: {
     type: Boolean,
@@ -39,11 +44,19 @@ const userSchema = new Schema<TUser>({
 })
 
 
-// userSchema.pre('save', async function(next) {
-//     const result = await User.findOne({email: this.email})
-//     if(result){
-//         throw AppError(httpStatus.NOT_)
-//     }
-// })
+
+userSchema.pre('save', async function(next) {
+  const user = this;
+  user.password = await bcrypt.hash(this.password, Number(config.salt_rounds));
+  next();
+})
+
+
+userSchema.set('toJSON', {
+  transform: function(doc, ret){
+    delete ret.password
+    return ret
+  }
+})
 
 export const User = model<TUser>("user", userSchema);
