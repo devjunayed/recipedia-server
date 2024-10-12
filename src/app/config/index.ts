@@ -9,5 +9,8 @@ export default {
   database_url: process.env.DATABASE_URL,
   api_url: process.env.API_URL,
   node_env: process.env.NODE_ENV,
-  salt_rounds: process.env.SALT_ROUNDS
+  salt_rounds: process.env.SALT_ROUNDS,
+  jwt_access_secret: process.env.ACCESS_SECRET,
+  jwt_access_expiresin: process.env.ACCESS_EXPIRES_IN
+
 }

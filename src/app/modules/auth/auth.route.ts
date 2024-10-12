@@ -1,12 +1,22 @@
-import { Router } from "express";
-import { AuthController } from "./auth.controller";
-import validateRequest from "../../middlewares/validateRequest";
-import { loginUserValidation } from "./auth.validation";
+import { Router } from 'express'
+import { AuthController } from './auth.controller'
+import validateRequest from '../../middlewares/validateRequest'
+import { loginUserValidation } from './auth.validation'
+import auth from '../../middlewares/auth'
+import { USER_ROLE } from '../user/user.constant'
 
-const router = Router();
+const router = Router()
 
+router.post(
+  '/signin',
+  validateRequest(loginUserValidation),
+  AuthController.loginUser,
+)
 
-router.post("/signin", validateRequest(loginUserValidation), AuthController.loginUser);
+router.post(
+  '/change-password',
+  auth(USER_ROLE.admin, USER_ROLE.user, USER_ROLE.premiumUser),
+  AuthController.changePassword,
+)
 
-
-export const AuthRoutes = router;
+export const AuthRoutes = router

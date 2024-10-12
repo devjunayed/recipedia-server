@@ -5,6 +5,7 @@ import { AuthServices } from "./auth.service";
 
 const loginUser = catchAsync(async(req, res) => {
     const result = await AuthServices.logInUserFromDB(req.body);
+    res.cookie('access-token', result.accessToken);
     sendResponse(res, {
         success: true,
         message: "User logged in successfully!",
@@ -12,8 +13,18 @@ const loginUser = catchAsync(async(req, res) => {
         statusCode: httpStatus.OK
     })
 })
+const changePassword = catchAsync(async(req, res) => {
+    const result = await AuthServices.changePasswordIntoDB(req?.user, req.body);
+    sendResponse(res, {
+        success: true,
+        message: "Password changed successfully!",
+        data: result,
+        statusCode: httpStatus.OK
+    })
+})
 
 
 export const AuthController = {
-    loginUser
+    loginUser,
+    changePassword
 }
