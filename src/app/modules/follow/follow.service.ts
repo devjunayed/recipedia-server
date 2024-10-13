@@ -13,7 +13,11 @@ const toggleFollowersIntoDB = async (userId: string, followingId: string) => {
       { $pull: { followersId: { followerId: new ObjectId(userId) } } },
       { new: true },
     )
-    return { status: 'unfollowed', updatedUser }
+    return {
+      totalFollowers: user.followersId.length - 1 ,
+      status: 'unfollowed',
+      updatedUser,
+    }
   }
 
   const updatedUser = await Followers.findOneAndUpdate(
@@ -21,7 +25,11 @@ const toggleFollowersIntoDB = async (userId: string, followingId: string) => {
     { $addToSet: { followersId: { followerId: userId } } },
     { new: true, upsert: true },
   )
-  return { status: 'followed', updatedUser }
+  return {
+    totalFollowers: updatedUser.followersId.length,
+    status: 'followed',
+    updatedUser,
+  }
 }
 
 export const FollowersServices = {
