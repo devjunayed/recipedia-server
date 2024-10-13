@@ -34,6 +34,9 @@ const userSchema = new Schema<TUser, UserModel>(
       enum: ['admin', 'user', 'premiumUser'],
       default: 'user',
     },
+    bio: {
+      type: String,
+    },
     isDeleted: {
       type: Boolean,
       default: false,

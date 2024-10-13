@@ -12,6 +12,7 @@ export interface TUser{
     image: string;
     password: string;
     address: string;
+    bio?: string;
     role: TRole;
     isDeleted: boolean,
     status: TStatus

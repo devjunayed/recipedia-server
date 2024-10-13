@@ -29,8 +29,8 @@ The primary goal is to develop a fully functional web application with an intuit
 
 *   ✅✅✅**User Registration**: Account creation with email, password, and profile details (e.g., username, profile picture).
 *   ✅✅✅**Login & JWT-based Authentication**: Secure login with JWT tokens to manage user sessions.
-*   **Password Recovery**: Password reset functionality via email.
-*   **Secure Password Change**: Ability to update the password after login.
+*   ✅✅✅**Password Recovery**: Password reset functionality via email.
+*   ✅✅✅**Secure Password Change**: Ability to update the password after login.
 
 #### 3.2 User Profile Management
 
